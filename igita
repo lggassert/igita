@@ -31,9 +31,6 @@ class Igita(cmd.Cmd):
     def do_q(self, line):
         self.do_quit(line)
         
-    def none():
-        pass
-        
 if __name__ == '__main__':
     Igita().cmdloop()
 

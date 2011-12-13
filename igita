@@ -5,19 +5,56 @@ import os
 class Igita(cmd.Cmd):
     prompt = "igita >> "
     
+    git_cmds = [
+        'add',
+        'archive',
+        'branch',
+        'cat-file',
+        'checkout',
+        'clone',
+        'commit',
+        'config',
+        'diff',
+        'fetch',
+        'fsck',
+        'gc',
+        'grep',
+        'init',
+        'instaweb',
+        'log',
+        'ls-tree',
+        'merge',
+        'prune',
+        'pull',
+        'push',
+        'remote',
+        'reset',
+        'rm',
+        'show',
+        'stash',
+        'status',
+        'tag',
+    ]
+    
     def cmd(self, cmd, line):
         os.system("%s %s" % (cmd, line))
     
     def default(self, line):
         self.cmd('git', line)
-        
+    
     def do_git(self, line):
         self.default(line)
+
+    def complete_git(self, text, line, begidx, endidx):
+        if not text:
+            return self.git_cmds
+        else:
+            return [cmd for cmd in self.git_cmds if cmd.startswith(text) ]
 
     def do_ls(self, line):
         self.cmd('git status', line)
         
-    def do_sys(self, line):
+    def do_shell(self, line):
         self.cmd(line, "")
             
     def do_cd(self, line):
@@ -29,7 +66,7 @@ class Igita(cmd.Cmd):
         quit()
     
     def do_q(self, line):
-        self.do_quit(line)
+        quit()
         
 if __name__ == '__main__':
     Igita().cmdloop()

@@ -16,5 +16,5 @@ For convenience, igita implements some other calls:
 
 *       _ls_ - NOTE: the same as 'git status'
 *       _cd_ - changes directory
-*       _quit_ **or** _q_ - exits
+*       _quit_ **or** _q_ - exits igita
 *       _git_ - for when you forget you're using igita

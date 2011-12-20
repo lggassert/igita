@@ -66,7 +66,10 @@ class Igita(cmd.Cmd):
         quit()
     
     def do_q(self, line):
-        quit()
+        self.do_quit(line)
+
+    def emptyline(self):
+        self.do_ls("")
         
 if __name__ == '__main__':
     Igita().cmdloop()

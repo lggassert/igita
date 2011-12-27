@@ -25,5 +25,5 @@ For convenience, igita implements some other calls:
 
 *       _ls_ - the same as 'git status'
 *       _cd_ - the same as 'git checkout'
-*       _quit_ **or** _q_ - exits igita
+*       _quit_ **or** _q_ - exits igita (**EOF** works too)
 *       _git_ - for when you forget you're using igita

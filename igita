@@ -58,14 +58,16 @@ class Igita(cmd.Cmd):
         self.cmd(line, "")
             
     def do_cd(self, line):
-        if not line: line = "."
-        os.chdir(line)
-        print os.getcwd()
+        self.cmd('git checkout', line)
     
     def do_quit(self, line):
         quit()
     
     def do_q(self, line):
+        self.do_quit(line)
+
+    def do_EOF(self, line):
+        print ""
         self.do_quit(line)
 
     def emptyline(self):

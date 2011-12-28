@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import cmd
 import os
+import readline
 
 class Igita(cmd.Cmd):
     prompt = "igita >> "
@@ -36,6 +37,8 @@ class Igita(cmd.Cmd):
         'tag',
     ]
     
+    hist_file = ''
+    
     def cmd(self, cmd, line):
         os.system("%s %s" % (cmd, line))
     
@@ -61,17 +64,24 @@ class Igita(cmd.Cmd):
         self.cmd('git checkout', line)
     
     def do_quit(self, line):
+        readline.write_history_file(self.hist_file)
         quit()
     
     def do_q(self, line):
         self.do_quit(line)
 
     def do_EOF(self, line):
-        print ""
+        print ''
         self.do_quit(line)
 
     def emptyline(self):
-        self.do_ls("")
+        self.do_ls('')
+
+    def preloop(self):
+        self.hist_file = os.path.abspath('.igita_history')
+        open(self.hist_file, 'a').close()
+        readline.set_history_length(1000)
+        readline.read_history_file(self.hist_file)
         
 if __name__ == '__main__':
     Igita().cmdloop()

@@ -23,4 +23,4 @@ For convenience, igita implements some other calls:
 *       _echo_ - prints something, will be used to inspect variables at some point
 *       _quit_ **or** _q_ - exits igita (**EOF** works too)
 
-igita no longer responds to system calls.
+**NOTE:** igita no longer responds to system calls.

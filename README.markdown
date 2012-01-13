@@ -12,18 +12,14 @@ when you'd normally type (on a regular shell):
 
         >> git <command>
 
-It can also respond to any system call:
-
-        >> shell <system call>
-
-or:
-
-        >> ! <system call>
-
-
 For convenience, igita implements some other calls:
 
-*       _ls_ - the same as 'git status'
-*       _cd_ - the same as 'git checkout'
-*       _quit_ **or** _q_ - exits igita (**EOF** works too)
 *       _git_ - for when you forget you're using igita
+*       _cd_ - the same as 'git checkout'
+*       _ls_ - the same as 'git status'
+*       _hist_ - shows igita's history
+*       _python_ - opens a python interpreter
+*       _echo_ - prints something, will be used to inspect variables at some point
+*       _quit_ **or** _q_ - exits igita (**EOF** works too)
+
+igita no longer responds to system calls.

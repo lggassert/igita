@@ -14,13 +14,13 @@ class Igita(cmd.Cmd):
     prompt = "igita >> "
     
     def default(self, line):
-        self.shell.git(line)
+        self.default(line)
 
     def emptyline(self):
         self.do_ls('')
     
     def do_git(self, line):
-        self.default(line)
+        self.shell.git(line)
 
     def complete_git(self, text, line, begidx, endidx):
         git_cmds = self.shell.git_cmds

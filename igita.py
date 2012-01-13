@@ -5,6 +5,10 @@ import re
 import readline
 import subprocess
 
+from igita.commands import shell
+from igita.commands import shell_output
+from igita.commands import Commands
+
 class Igita(cmd.Cmd):
     prompt = "igita >> "
     
@@ -42,43 +46,8 @@ class Igita(cmd.Cmd):
     hist_file = ''
     FNULL = ''
     
-    def cmd(self, cmd, line, **kwargs):
-        params = self.params(cmd, line)
-        return subprocess.call(
-            params,
-            stdout=kwargs.get('stdout', None),
-            stderr=kwargs.get('stderr', None),
-        )
-    
-    def cmd_output(self, cmd, line, **kwargs):
-        params = self.params(cmd, line)
-        return subprocess.check_output(
-            params,
-            stderr=kwargs.get('stderr', None),
-        )
-        
-    def params(self, cmd, line):
-        params = []
-        
-        if cmd:
-            params.append(cmd)
-        
-        for i, x in enumerate(re.split('"', line)):
-            if i%2:
-                param = '"%s"' % x
-                params.append(param)
-            else:
-                for j, y in enumerate(re.split("'", x)):
-                    if j%2:
-                        param = '"%s"' % y
-                        params.append(param)
-                    else:
-                        for s in y.split():
-                            params.append(s)
-        return params
-    
     def default(self, line):
-        self.cmd('git', line)
+        shell('git', line)
     
     def do_git(self, line):
         self.default(line)
@@ -90,13 +59,10 @@ class Igita(cmd.Cmd):
             return [cmd for cmd in self.git_cmds if cmd.startswith(text) ]
 
     def do_ls(self, line):
-        self.cmd('git', 'status ' + line)
-        
-    def do_shell(self, line):
-        self.cmd("", line)
+        Commands().ls(line)
             
     def do_cd(self, line):
-        self.cmd('git', 'checkout ' + line)
+        shell('git', 'checkout ' + line)
     
     def do_quit(self, line):
         readline.write_history_file(self.hist_file)
@@ -114,11 +80,11 @@ class Igita(cmd.Cmd):
 
     def preloop(self):
         self.FNULL = open('/dev/null', 'w')
-        if self.cmd('git', 'rev-parse --show-toplevel', stdout=self.FNULL, stderr=self.FNULL):
+        if shell('git', 'rev-parse --show-toplevel', stdout=self.FNULL, stderr=self.FNULL):
             print "This does not seem to be a git repository"
             quit()
             
-        self.hist_file = self.cmd_output('git', 'rev-parse --show-toplevel').strip()
+        self.hist_file = shell_output('git', 'rev-parse --show-toplevel').strip()
         self.hist_file += '/.igita_history'
         
         open(self.hist_file, 'a').close()

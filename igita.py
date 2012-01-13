@@ -27,7 +27,7 @@ class Igita(cmd.Cmd):
         self.history = init_history(readline)
     
     def default(self, line):
-        self.default(line)
+        self.do_git(line)
 
     def emptyline(self):
         self.do_ls('')
@@ -43,6 +43,9 @@ class Igita(cmd.Cmd):
         
     def do_echo(self, line):
         self.shell.echo(line)
+        
+    def do_edit(self, line):
+        self.shell.edit(line)
     
     def do_git(self, line):
         self.shell.git(line)

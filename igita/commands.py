@@ -79,12 +79,15 @@ def commands():
             'status',
             'tag',
         ]
-
-        def ls(self, line):
-            system('git', 'status ' + line)
             
         def cd(self, line):
             system('git', 'checkout ' + line)
+
+        def echo(self, line):
+            print line
+            
+        def edit(self, line):
+            system('vim', line)
             
         def git(self, line):
             system('git', line)
@@ -92,8 +95,8 @@ def commands():
         def hist(self, line, history):
             print history.print_(line)
             
-        def echo(self, line):
-            print line
+        def ls(self, line):
+            system('git', 'status ' + line)
             
         def python(self, line, igitaInst):
             igitaInst.history.save()

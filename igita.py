@@ -4,10 +4,8 @@ import cmd
 import readline
 import subprocess
 
-from igita.commands import system
-from igita.commands import system_output
 from igita.commands import commands
-
+from igita.core import system
 from igita.history import init_history
 
 class Igita(cmd.Cmd):

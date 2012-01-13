@@ -1,6 +1,6 @@
 import readline
 
-from commands import system_output
+from core import system_output
     
 def init_history(handler):
     class History():

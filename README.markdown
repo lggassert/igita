@@ -18,6 +18,7 @@ For convenience, igita implements some other calls:
 *       _cd_ - the same as 'git checkout'
 *       _ls_ - the same as 'git status'
 *       _hist_ - shows igita's history
+*       _edit_ - edit a file (currently uses VIM)
 *       _python_ - opens a python interpreter
 *       _echo_ - prints something, will be used to inspect variables at some point
 *       _quit_ **or** _q_ - exits igita (**EOF** works too)

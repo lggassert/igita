@@ -8,13 +8,14 @@ igita easily responds to any valid git command. Just type:
 
         >> <command>
 
-when you'd normally type (on a regular shell):
+when you'd normally type:
 
         >> git <command>
+        
+BTW, the above works too! **=D**
 
-For convenience, igita implements some other calls:
+For convenience, igita implements some other methods:
 
-*       _git_ - for when you forget you're using igita
 *       _cd_ - the same as 'git checkout'
 *       _ls_ - the same as 'git status'
 *       _hist_ - shows igita's history

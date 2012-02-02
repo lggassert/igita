@@ -5,6 +5,8 @@ from history import init_history
 
 def commands():
     class Commands:
+        git_call = 'git'
+    
         git_cmds = [
             'add',
             'archive',
@@ -37,7 +39,7 @@ def commands():
         ]
             
         def cd(self, line):
-            system('git', 'checkout ' + line)
+            system(self.git_call, 'checkout ' + line)
 
         def echo(self, line):
             print line
@@ -46,7 +48,7 @@ def commands():
             system('vim', line)
             
         def git(self, line):
-            system('git', line)
+            system('git-achievements', line)
             
         def hist(self, line, history):
             print history.print_(line)

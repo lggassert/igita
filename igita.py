@@ -22,6 +22,9 @@ class Igita(cmd.Cmd):
             print "This does not seem to be a git repository"
             quit()
         
+        if system('git-achievements', 'status', stdout=self.FNULL, stderr=self.FNULL) == 0:
+            self.shell.git_call = 'git-achievements'
+        
         self.history = init_history(readline)
     
     def default(self, line):

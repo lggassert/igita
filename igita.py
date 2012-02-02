@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import cmd
+import re
 import readline
 import subprocess
 
@@ -26,6 +27,16 @@ class Igita(cmd.Cmd):
             self.shell.git_call = 'git-achievements'
         
         self.history = init_history(readline)
+    
+    def precmd(self, line):
+        def sub_fun(match):
+            return str(self.shell.scope.get(match.groups()[0]))
+                
+        return re.sub(
+            r'\$(\S+)',
+            sub_fun,
+            line
+        )
     
     def default(self, line):
         self.do_git(line)

@@ -2,10 +2,13 @@ import code
 
 from core import system
 from history import init_history
+from scope import scope
 
 def commands():
     class Commands:
         git_call = 'git'
+    
+        scope = scope()
     
         git_cmds = [
             'add',

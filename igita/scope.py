@@ -1,6 +1,6 @@
 def scope():
     class Scope:
-        _scope = {'PORRA' : 1}  
+        _scope = {}  
         
         def set(self, var, value):
             self._scope[var] = value

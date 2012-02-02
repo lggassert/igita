@@ -77,6 +77,9 @@ class Igita(cmd.Cmd):
 
     def do_python(self, line):
         self.shell.python(line, self)
+        
+    def do_set(self, line):
+        self.shell.set(line)
 
     def do_q(self, line):
         self.do_quit(line)

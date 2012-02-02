@@ -2,11 +2,11 @@ def scope():
     class Scope:
         _scope = {'PORRA' : 1}  
         
-        def set(var, value):
+        def set(self, var, value):
             self._scope[var] = value
             return value
             
-        def unset(var):
+        def unset(self, var):
             del self._scope[var]
             
         def get(self, var):

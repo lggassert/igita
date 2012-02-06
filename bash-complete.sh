@@ -1,0 +1,1 @@
+/home/lggassert/personal/bash-complete/bash-complete.sh

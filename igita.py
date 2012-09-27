@@ -27,8 +27,7 @@ class Igita(cmd.Cmd):
             if system('git-achievements', 'status', stdout=self.FNULL, stderr=self.FNULL) == 0:
                 self.shell.git_call = 'git-achievements'
         except OSError, err:
-            pass
-            
+            pass            
         
         self.history = init_history(readline)
     

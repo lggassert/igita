@@ -7,6 +7,7 @@ from scope import scope
 def commands():
     class Commands:
         git_call = 'git'
+        editor = 'vim'
     
         scope = scope()
     
@@ -48,16 +49,16 @@ def commands():
             print line
             
         def edit(self, line):
-            system('vim', line)
+            system(editor, line)
             
         def git(self, line):
-            system('git-achievements', line)
+            system(self.git_call, line)
             
         def hist(self, line, history):
             print history.print_(line)
             
         def ls(self, line):
-            system('git', 'status ' + line)
+            system(self.git_call, 'status ' + line)
             
         def python(self, line, igitaInst):
             igitaInst.history.save()

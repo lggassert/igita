@@ -39,7 +39,8 @@ def system(command, line, **kwargs):
         
 def system_output(command, line, **kwargs):
         params = _params(command, line)
-        return subprocess.check_output(
+        return subprocess.Popen(
             params,
+            stdout=subprocess.PIPE,
             stderr=kwargs.get('stderr', None),
-        )
+        ).communicate()[0]

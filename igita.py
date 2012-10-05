@@ -17,8 +17,15 @@ class Igita(cmd.Cmd):
 
     def preloop(self):
         self.shell = commands()
-
-        for self.shell.
+        
+        match = re.compile('do_')
+        methods = self.shell.__class__.__dict__
+        for k in methods:
+            if match.match(k):
+                def inside_method(*args):
+                    return methods[k](*args)
+                setattr(Igita,k,inside_method)
+            
 
         self.FNULL = open('/dev/null', 'w')
         if system('git', 'rev-parse --show-toplevel', stdout=self.FNULL, stderr=self.FNULL):

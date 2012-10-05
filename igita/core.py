@@ -21,7 +21,7 @@ def _params(command, line):
                     param = '"%s"' % y
                     params.append(param)
                 else:
-                    for k, z  in enumerate(re.split('\|', y)):
+                    for k, z in enumerate(re.split('\|', y)):
                         if k%2:
                             do_break = 1
                             break

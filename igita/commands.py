@@ -42,31 +42,31 @@ def commands():
             'tag',
         ]
             
-        def cd(self, line):
+        def do_cd(self, line):
             system(self.git_call, 'checkout ' + line)
 
-        def echo(self, line):
+        def do_echo(self, line):
             print line
             
-        def edit(self, line):
+        def do_edit(self, line):
             system(editor, line)
             
-        def git(self, line):
+        def do_git(self, line):
             system(self.git_call, line)
             
-        def hist(self, line, history):
+        def do_hist(self, line, history):
             print history.print_(line)
             
-        def ls(self, line):
+        def do_ls(self, line):
             system(self.git_call, 'status ' + line)
             
-        def python(self, line, igitaInst):
+        def do_python(self, line, igitaInst):
             igitaInst.history.save()
             igitaInst.history.clear()
             code.interact(local={'igita' : igitaInst})
             igitaInst.history = init_history(igitaInst.history.handler)
             
-        def set(self, line):
+        def do_set(self, line):
             match = line.strip().split()
             if len(match)%2:
                 print "Missing value for variable {}".format(match[-1])
@@ -74,7 +74,7 @@ def commands():
             for i in range(0, len(match) - 1, 2):
                 self.scope.set(match[i], match[i + 1])
             
-        def quit(self, history):
+        def do_quit(self, history):
             history.save()
             quit()
             
